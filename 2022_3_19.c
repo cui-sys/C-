@@ -77,30 +77,39 @@
 //char* (*pfarr[4])(char*, const char*) = { my_strcpy ,my_strcpy ,my_strcpy ,my_strcpy };
 ////
 
-void menu()
-{
-	printf("********************************\n");
-	printf("**** 1.add            2.sub ****\n");
-	printf("**** 3.mul            4.div ****\n");
-	printf("*********    0.exit    *********\n");
-	printf("********************************\n");
-}
-int Add(int x, int y)
-{
-	return x + y;
-}
-int Sub(int x, int y)
-{
-	return x - y;
-}
-int Mul(int x, int y)
-{
-	return x * y;
-}
-int Div(int x, int y)
-{
-	return x / y;
-}
+//void menu()
+//{
+//	printf("********************************\n");
+//	printf("**** 1.add            2.sub ****\n");
+//	printf("**** 3.mul            4.div ****\n");
+//	printf("*********    0.exit    *********\n");
+//	printf("********************************\n");
+//}
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int Sub(int x, int y)
+//{
+//	return x - y;
+//}
+//int Mul(int x, int y)
+//{
+//	return x * y;
+//}
+//int Div(int x, int y)
+//{
+//	return x / y;
+//}
+////回调函数 - 通过一个函数的指针调用的函数
+//
+//void Calc(int (*pf)(int, int))
+//{
+//	int x = 0, y = 0;
+//	printf("请输入两个操作数:>");
+//	scanf_s("%d%d", &x, &y);
+//	printf("%d\n", pf(x, y));
+//}
 //int main()
 //{
 //	int input = 0, x = 0, y = 0;
@@ -117,24 +126,32 @@ int Div(int x, int y)
 //			printf("退出\n");
 //			break;
 //		case 1:
-//			printf("请输入两个操作数:>");
+//			Calc(Add);
+//
+//		/*	printf("请输入两个操作数:>");
 //			scanf_s("%d%d", &x, &y);
-//			printf("%d\n", Add(x, y));
+//			printf("%d\n", Add(x, y));*/
 //			break;
 //		case 2:
-//			printf("请输入两个操作数:>");
+//			Calc(Sub);
+//
+//			/*printf("请输入两个操作数:>");
 //			scanf_s("%d%d", &x, &y);
-//			printf("%d\n", Sub(x, y));
+//			printf("%d\n", Sub(x, y));*/
 //			break;
 //		case 3:
-//			printf("请输入两个操作数:>");
+//			Calc(Mul);
+//
+//			/*printf("请输入两个操作数:>");
 //			scanf_s("%d%d", &x, &y);
-//			printf("%d\n", Mul(x, y));
+//			printf("%d\n", Mul(x, y));*/
 //			break;
 //		case 4:
-//			printf("请输入两个操作数:>");
+//			Calc(Div);
+//
+//			/*printf("请输入两个操作数:>");
 //			scanf_s("%d%d", &x, &y);
-//			printf("%d\n", Div(x, y));
+//			printf("%d\n", Div(x, y));*/
 //			break;
 //		default:
 //			printf("请重新选择\n");
@@ -145,33 +162,51 @@ int Div(int x, int y)
 //	return 0;
 //}
 
-int main()
-{
-	int input = 0, x = 0, y = 0;
-	int (*parr[])(int, int) = { 0,Add,Sub,Mul,Div };
-	do
-	{
-		menu();
-		printf("请选择:>");
-		scanf_s("%d", &input);		
-		if (input >= 1 && input <= 4)
-		{
-			printf("请输入两个操作数:>");
-			scanf_s("%d%d", &x, &y);
-			int ret = parr[input](x, y);
-			printf("%d\n", ret);
+//int main()
+//{
+//	int input = 0, x = 0, y = 0;
+//	int (*parr[])(int, int) = { 0,Add,Sub,Mul,Div };
+//	do
+//	{
+//		menu();
+//		printf("请选择:>");
+//		scanf_s("%d", &input);		
+//		if (input >= 1 && input <= 4)
+//		{
+//			printf("请输入两个操作数:>");
+//			scanf_s("%d%d", &x, &y);
+//			int ret = parr[input](x, y);
+//			printf("%d\n", ret);
+//
+//		}
+//		else if (input == 0)
+//		{
+//			printf("退出\n");	
+//		}
+//		else
+//		{
+//			printf("请重新选择\n");
+//		}
+//
+//	} while (input);
+//
+//	return 0;
+//}
 
-		}
-		else if (input == 0)
-		{
-			printf("退出\n");	
-		}
-		else
-		{
-			printf("请重新选择\n");
-		}
+//
+////指向函数指针数组的指针 - 指针指向一个数组，数组的元素都是函数指针
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int(*p)[10] = &arr;//
+//
+//	int(*pfArr[4])(int, int) = { 0,Add,0,0 };//pfArr - 函数指针数组
+//	int(*(*ptArr)[4])(int, int) = &pfArr;//ptArr - 数组指针，指针指向的数组有4个元素，元素的类型是一个函数指针 - int(*)(int, int)
+//	return 0;
+//}
 
-	} while (input);
-
-	return 0;
-}
